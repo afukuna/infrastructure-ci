@@ -1,4 +1,4 @@
 identitest:
-  build: .
+  build: ../identitest/
 identiapp:
-  build: .
+  build: ../identiapp/
