@@ -21,6 +21,9 @@ RUN echo "listen_addresses='*'" >> /var/lib/pgsql/9.4/data/postgresql.conf
 RUN service postgresql-9.4 start
 RUN chkconfig postgresql-9.4 on
 
+RUN service httpd start
+RUN chkconfig httpd on
+
 #USER postgres
 
 #RUN psql --command "CREATE USER docker WITH SUPERUSER PASSWORD 'docker';" && createdb -O docker docker
