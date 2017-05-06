@@ -15,5 +15,6 @@ RUN wget http://selenium-release.storage.googleapis.com/3.4/selenium-server-stan
 
 # Install app dependencies
 COPY package.json /src/package.json
+COPY test.js /src/test.js
 RUN cd /src; npm install --dev
 
