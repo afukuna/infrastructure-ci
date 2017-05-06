@@ -1,0 +1,23 @@
+#Default compose args
+pwd
+ls -la
+COMPOSE_ARGS=" -f identijenk/jenkins.yml -p jenkins "
+
+#Make sure old containers are gone
+sudo docker-compose $COMPOSE_ARGS stop
+sudo docker-compose $COMPOSE_ARGS rm --force -v
+
+#build the system
+sudo docker-compose $COMPOSE_ARGS build --no-cache
+sudo docker-compose $COMPOSE_ARGS up -d
+
+sudo docker-compose $COMPOSE_ARGS run identitest nodejs -v
+
+#Run system test if unit tests passed
+IP=$(sudo docker inspect -f {{.NetworkSettings.IPAddress}} jenkins_identitest_1)
+echo "Test"
+echo $IP
+
+#Pull down the system
+sudo docker-compose $COMPOSE_ARGS stop
+sudo docker-compose $COMPOSE_ARGS rm --force -v
