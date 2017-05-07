@@ -1,6 +1,6 @@
 identitest:
   build: ../identitest/
   tty: true
-identiapp:
-  build: ../identiapp/
-  tty: true
+#identiapp:
+#  build: ../identiapp/
+#  tty: true

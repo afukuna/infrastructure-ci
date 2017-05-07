@@ -10,14 +10,19 @@ sudo docker-compose $COMPOSE_ARGS rm --force -v
 #build the system
 sudo docker-compose $COMPOSE_ARGS build --no-cache
 sudo docker-compose $COMPOSE_ARGS up -d
-
-sudo docker-compose $COMPOSE_ARGS run identitest nodejs -v
+sudo docker ps -a
+sudo docker exec jenkins_identitest_1 Xvfb :99 -screen 0 1024x768x24 &
+sudo docker exec jenkins_identitest_1 java -jar /src/selenium-server-standalone-3.4.0.jar &
+sudo docker exec jenkins_identitest_1 /src/node_modules/jenkins-mocha/bin/jenkins.js /src/test2.js
+sudo docker ps -a
+sudo docker cp jenkins_identitest_1:/artifacts/test/xunit.xml ~/workspace/samplejob/xunit.xml
 
 #Run system test if unit tests passed
-IP=$(sudo docker inspect -f {{.NetworkSettings.IPAddress}} jenkins_identitest_1)
+IP=$(sudo docker inspect --format='{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' jenkins_identitest_1)
 echo "Test"
 echo $IP
 
 #Pull down the system
 sudo docker-compose $COMPOSE_ARGS stop
 sudo docker-compose $COMPOSE_ARGS rm --force -v
+
