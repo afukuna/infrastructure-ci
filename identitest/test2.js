@@ -17,6 +17,8 @@ t.describe('テスト', function () {
   t.it('check return 200', function () {
     driver.get('http://www.google.co.jp').then(function (res) {
       assert.equal(200, res.statusCode);
+    }).catch(function (e) { // catch handlerを追加
+      done(e)
     });
   });
 });
