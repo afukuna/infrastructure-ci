@@ -14,10 +14,9 @@ t.describe('テスト', function () {
     driver.quit();
   });
 
-  t.it('check return 200', function (done) {
+  t.it('check return 200', function () {
     driver.get('http://www.google.co.jp').then(function (res) {
       assert.equal(200, res.statusCode);
-      done();
     });
   });
 });
