@@ -19,9 +19,10 @@ t.describe('テスト', function () {
       .withCapabilities(webdriver.Capabilities.firefox()).build();
     driver.get('http://www.google.co.jp').then(function (res) {
       assert.equal(200, res.statusCode);
+      done();
       driver.quit();
     }).catch(function (e) { // catch handlerを追加
-      done(e);
+      done();
       driver.quit();
     });
   });
