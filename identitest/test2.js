@@ -14,7 +14,7 @@ t.describe('テスト', function () {
 //    driver.quit();
 //  });
 
-  t.it('check return 200', function () {
+  t.it('check return 200', function (done) {
     driver = new webdriver.Builder().usingServer('http://localhost:4444/wd/hub')
       .withCapabilities(webdriver.Capabilities.firefox()).build();
     driver.get('http://www.google.co.jp').then(function (res) {
