@@ -6,8 +6,8 @@ RUN yum -y update
 RUN yum -y install curl
 RUN yum -y install wget
 RUN yum -y install httpd
-RUN yum -y install epel-release
 RUN yum -y install sudo
+RUN rpm -ivh https://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm
 RUN rpm -ivh http://rpms.famillecollet.com/enterprise/remi-release-6.rpm
 RUN yum -y install --enablerepo=remi,remi-php56 php php-intl php-devel php-mbstring php-pdo php-gd php-pgsql
 RUN yum -y install https://download.postgresql.org/pub/repos/yum/9.4/redhat/rhel-7-x86_64/pgdg-centos94-9.4-3.noarch.rpm
@@ -26,4 +26,4 @@ RUN chkconfig httpd on
 
 #USER postgres
 
-#RUN psql --command "CREATE USER docker WITH SUPERUSER PASSWORD 'docker';" && createdb -O docker docker
+#RUN psql --command "CREATE USER docker WITH SUPERUSER PASSWORD 'docker';"
