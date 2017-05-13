@@ -10,7 +10,17 @@ describe('test', function () {
             .usingServer('http://localhost:4444/wd/hub')
             .build();
 
-        driver.get('http://www.google.co.jp')
+        driver.get('http://www.google.co.jp');
+
+        webdriver.WebDriver.prototype.saveScreenshot = function(filename) {
+            return driver.takeScreenshot().then(function(data) {
+                fs.writeFile(filename, data.replace(/^data:image\/png;base64,/,''), 'base64', function(err) {
+                    if(err) throw err;
+                });
+            });    
+        };
+        driver.saveScreenshot('sample.png');
+
         done();
         driver.quit();
     });
