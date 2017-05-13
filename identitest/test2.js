@@ -1,9 +1,9 @@
 var webdriver = require('selenium-webdriver'),
     By = webdriver.By;
 
-describe('tedt', function () {
+describe('test', function () {
 
-    it('tedt', function (done) {
+    it('test1', function (done) {
 
         var driver = new webdriver.Builder()
             .forBrowser('firefox')
