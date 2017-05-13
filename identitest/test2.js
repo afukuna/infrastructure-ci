@@ -1,5 +1,6 @@
 var webdriver = require('selenium-webdriver'),
-    By = webdriver.By;
+    By = webdriver.By,
+    fs = require('fs');
 
 describe('test', function () {
 
