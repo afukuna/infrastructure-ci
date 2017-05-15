@@ -25,7 +25,7 @@ describe('test', function () {
                     });
                 });
             };
-            driver.saveScreenshot('sample.png');
+            driver.saveScreenshot('/tmp/sample.png');
             done();
             driver.quit();
         }).catch(function(err){
