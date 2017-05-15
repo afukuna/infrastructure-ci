@@ -31,7 +31,7 @@
   },
   "devDependencies": {
     "selenium-webdriver":"^3.4.0",
-    "mocha": "^3.4.1",
+    "mocha": "^3.4.1"
   },
   "scripts": {
     "test": "mocha -t 600000 --recursive test"
