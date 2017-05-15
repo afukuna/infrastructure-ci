@@ -25,11 +25,11 @@ describe('test', function () {
         driver.findElement(By.name('btnG')).click();
         driver.wait(until.titleIs('webdriver - Google Search'), 1000)
         .then(function(){
-            driver.saveScreenshot('/tmp/sample.png');
+            driver.saveScreenshot('sample.png');
             done();
             driver.quit();
         }).catch(function(err){
-            driver.saveScreenshot('/tmp/sample.png');
+            driver.saveScreenshot('sample.png');
             done(err);
             driver.quit();
         });
