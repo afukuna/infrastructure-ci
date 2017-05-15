@@ -21,7 +21,7 @@ describe('test', function () {
 
             webdriver.WebDriver.prototype.saveScreenshot = function(filename) {
                 return driver.takeScreenshot().then(function(data) {
-                    fs.writeFile(filename, data.replace(/^data:image\/png;base64,/,''), 'base64', function(err) {
+                    fs.writeFile('/tmp/' + filename, data.replace(/^data:image\/png;base64,/,''), 'base64', function(err) {
                         if(err) throw err;
                     });
                 });
