@@ -8,7 +8,7 @@ describe('test', function () {
     it('test1', function (done) {
 
         webdriver.WebDriver.prototype.saveScreenshot = function(filename) {
-            return driver.takeScreenshot().then(function(filename) {
+            return driver.takeScreenshot().then(function(data) {
                 fs.writeFile('/tmp/' + filename, data.replace(/^data:image\/png;base64,/,''), 'base64', function(err) {
                     if(err) throw err;
                 });
