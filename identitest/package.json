@@ -31,7 +31,8 @@
   },
   "devDependencies": {
     "selenium-webdriver":"^3.4.0",
-    "mocha": "^3.4.1"
+    "mocha": "^3.4.1",
+    "xunit-file": "^1.0.0"
   },
   "scripts": {
     "test": "mocha -t 600000 --recursive test"
