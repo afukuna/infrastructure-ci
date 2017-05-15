@@ -9,7 +9,7 @@ describe('test', function () {
 
         webdriver.WebDriver.prototype.saveScreenshot = function(filename) {
             return driver.takeScreenshot().then(function(data) {
-                fs.writeFile('/tmp/' + filename, data.replace(/^data:image\/png;base64,/,''), 'base64', function(err) {
+                fs.writeFile(filename, data.replace(/^data:image\/png;base64,/,''), 'base64', function(err) {
                     if(err) throw err;
                 });
             });
@@ -25,11 +25,11 @@ describe('test', function () {
         driver.findElement(By.name('btnG')).click();
         driver.wait(until.titleIs('webdriver - Google Search'), 1000)
         .then(function(){
-            driver.saveScreenshot('sample.png');
+            driver.saveScreenshot('/tmp/sample.png');
             done();
             driver.quit();
         }).catch(function(err){
-            driver.saveScreenshot('sample.png');
+            driver.saveScreenshot('/tmp/sample.png');
             done(err);
             driver.quit();
         });
