@@ -26,7 +26,6 @@ describe('test', function () {
 //            });
 //        };
 //        driver.saveScreenshot('sample.png');
-        sleep(2000);
         driver.quit();
         done();
     });
