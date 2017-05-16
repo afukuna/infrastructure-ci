@@ -28,10 +28,9 @@ describe('test', function () {
 //            driver.saveScreenshot('sample.png');
             done();
             driver.quit();
-        }).catch(function(err){
+//        }).catch(function(err){
 //            done(err);
-            done();
-            driver.quit();
+//            driver.quit();
         });
     });
 });
