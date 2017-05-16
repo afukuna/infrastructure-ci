@@ -25,10 +25,12 @@ describe('test', function () {
                     });
                 });
             };
+console.log('test2');
 //            driver.saveScreenshot('sample.png');
             done();
             driver.quit();
         }).catch(function(err){
+console.log('test3');
             done(err);
             driver.quit();
         });
