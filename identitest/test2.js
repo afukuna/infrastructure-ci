@@ -22,8 +22,8 @@ describe('test', function () {
             fs.writeFile('sample.png', data.replace(/^data:image\/png;base64,/,''), 'base64', function(err) {
                 if(err) throw err;
             });
-        });
         driver.quit();
         done();
+        });
     });
 });
