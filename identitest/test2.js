@@ -18,19 +18,17 @@ describe('test', function () {
         driver.findElement(By.name('btnG')).click();
         driver.wait(until.titleIs('webdriver - Google Search'), 1000)
         .then(function(){
-            webdriver.WebDriver.prototype.saveScreenshot = function(filename) {
-                return driver.takeScreenshot().then(function(data) {
-                    fs.writeFile(filename, data.replace(/^data:image\/png;base64,/,''), 'base64', function(err) {
-                        if(err) throw err;
-                    });
-                });
-            };
-console.log('test2');
+//            webdriver.WebDriver.prototype.saveScreenshot = function(filename) {
+//                return driver.takeScreenshot().then(function(data) {
+//                    fs.writeFile(filename, data.replace(/^data:image\/png;base64,/,''), 'base64', function(err) {
+//                        if(err) throw err;
+//                    });
+//                });
+//            };
 //            driver.saveScreenshot('sample.png');
             done();
             driver.quit();
         }).catch(function(err){
-console.log('test3');
             done(err);
             driver.quit();
         });
