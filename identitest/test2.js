@@ -25,7 +25,6 @@ describe('test', function () {
                     });
                 });
             };
-console.log('test!');
 //            driver.saveScreenshot('sample.png');
             done();
             driver.quit();
