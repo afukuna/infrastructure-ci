@@ -19,7 +19,7 @@ describe('test', function () {
         driver.wait(until.titleIs('webdriver - Google Search'), 3000);
 
 //        driver.manage().window().setSize(400, 400);
-        driver.manage().window().maximize();
+        dconsole.log(driver.manage());
 
         driver.takeScreenshot().then(function(data) {
             fs.writeFile('sample.png', data.replace(/^data:image\/png;base64,/,''), 'base64', function(err) {
