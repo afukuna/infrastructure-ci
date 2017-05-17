@@ -35,12 +35,8 @@ console.log('test4');
 
 console.log('test5');
 
-driver.sleep(5000);
-
         driver.saveScreenshot('/tmp/sample.png');
         
-driver.sleep(5000);
-
         driver.findElement(By.name('q')).sendKeys('webdriver');
         driver.findElement(By.name('btnG')).click();
         driver.wait(until.titleIs('webdriver - Google Search'), 3000);
