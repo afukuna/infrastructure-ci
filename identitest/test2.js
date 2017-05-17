@@ -33,13 +33,15 @@ console.log('test4');
 
 console.log('test5');
 
+        driver.saveScreenshot('/tmp/sample.png');
+        
         driver.findElement(By.name('q')).sendKeys('webdriver');
         driver.findElement(By.name('btnG')).click();
         driver.wait(until.titleIs('webdriver - Google Search'), 3000);
 
 console.log('test6');
 
-        driver.saveScreenshot('sample.png');
+        driver.saveScreenshot('/tmp/sample.png');
 
 console.log('test7');
         
