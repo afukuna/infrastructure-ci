@@ -21,6 +21,7 @@ console.log('test2');
             });
         })
     };
+    driver.saveScreenshot('/tmp/sample.png');
 
 console.log('test3');
 
