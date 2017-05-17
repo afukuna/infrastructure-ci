@@ -15,14 +15,8 @@ console.log('test1');
 console.log('test2');
 
     webdriver.WebDriver.prototype.saveScreenshot = function(filename) {
-
-console.log('test2-1');
-//console.log(driver.takeScreenshot());
-
         return driver.takeScreenshot().then(function(data,err) {
             fs.writeFile(filename, data.replace(/^data:image\/png;base64,/,''), 'base64', function(err) {
-console.log('test2-2');
-console.log(err);
                 if(err) throw err;
             });
         })
@@ -47,7 +41,7 @@ console.log('test5');
 
 console.log('test6');
 
-        driver.saveScreenshot('/tmp/sample.png');
+        driver.saveScreenshot('/tmp/sample2.png');
 
 console.log('test7');
         
