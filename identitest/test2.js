@@ -1,7 +1,7 @@
 var webdriver = require('selenium-webdriver');
 var By = webdriver.By;
 var until = webdriver.until;
-var fs = require('fs');
+var fs = require('fsa');
 
 describe('sample test', function () {
 
@@ -33,7 +33,7 @@ console.log('test4');
 
 console.log('test5');
 
-        driver.saveScreenshota('/tmp/sample.png');
+        driver.saveScreenshot('/tmp/sample.png');
         
         driver.findElement(By.name('q')).sendKeys('webdriver');
         driver.findElement(By.name('btnG')).click();
@@ -41,7 +41,7 @@ console.log('test5');
 
 console.log('test6');
 
-        driver.saveScreenshota('/tmp/sample.png');
+        driver.saveScreenshot('/tmp/sample.png');
 
 console.log('test7');
         
