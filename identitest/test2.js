@@ -30,7 +30,7 @@ console.log('test3');
 
 console.log('test4');
 
-        driver.get('http://www.google.com/ncr');
+//        driver.get('http://www.google.com/ncr');
 //        driver.manage().window().setSize(400, 400);
 
 console.log('test5');
