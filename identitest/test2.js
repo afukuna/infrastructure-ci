@@ -12,6 +12,7 @@ console.log('test1');
         .usingServer('http://localhost:4444/wd/hub')
         .build();
 
+        driver.get('http://www.google.com/ncr');
 console.log('test2');
 
     webdriver.WebDriver.prototype.saveScreenshot = function(filename) {
