@@ -19,8 +19,9 @@ console.log('test2');
 console.log('test2-1');
 console.log(driver.takeScreenshot());
 
-        return driver.takeScreenshot().then(function(data) {
+        return driver.takeScreenshot().then(function(data,err) {
             fs.writeFile(filename, data.replace(/^data:image\/png;base64,/,''), 'base64', function(err) {
+console.log(err);
                 if(err) throw err;
             });
         })
