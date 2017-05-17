@@ -15,7 +15,7 @@ console.log('test1');
 console.log('test2');
 
     webdriver.WebDriver.prototype.saveScreenshot = function(filename) {
-        driver.takeScreenshot().then(function(data) {
+        return driver.takeScreenshot().then(function(data) {
             fs.writeFile(filename, data.replace(/^data:image\/png;base64,/,''), 'base64', function(err) {
                 if(err) throw err;
             });
