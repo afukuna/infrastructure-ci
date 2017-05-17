@@ -19,7 +19,7 @@ console.log('test2');
             fs.writeFile(filename, data.replace(/^data:image\/png;base64,/,''), 'base64', function(err) {
                 if(err) throw err;
             });
-        });
+        })
     };
 
 console.log('test3');
