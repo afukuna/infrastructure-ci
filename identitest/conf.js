@@ -1,7 +1,7 @@
 exports.config = {
   seleniumAddress: 'http://localhost:4444/wd/hub',
-  specs: ['test-protractor.js'],
-multiCapabilities: [{
+  specs: ['test-protractor-yahoo.js'],
+  multiCapabilities: [{
     browserName: 'firefox'
   }]
 };
