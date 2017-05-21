@@ -1,6 +1,21 @@
+// at the top of the test spec:
+var fs = require('fs');
+
 describe('angularjs homepage todo list', function() {
   it('should add a todo', function() {
     browser.get('https://angularjs.org');
+
+    // abstract writing screen shot to a file
+    function writeScreenShot(data, filename) {
+        var stream = fs.createWriteStream(filename);
+        stream.write(new Buffer(data, 'base64'));
+        stream.end();
+    }
+
+    // within a test:
+    browser.takeScreenshot().then(function (png) {
+        writeScreenShot(png, 'sample.png');
+    });
 
     element(by.model('todoList.todoText')).sendKeys('write first protractor test');
     element(by.css('[value="add"]')).click();
