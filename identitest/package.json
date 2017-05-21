@@ -22,22 +22,10 @@
   "engines": {
     "node": ">= 6.9.0"
   },
-  "dependencies": {
-    "selenium-webdriver":"^3.4.0",
-    "adm-zip": "^0.4.7",
-    "rimraf": "^2.5.4",
-    "tmp": "0.0.30",
-    "xml2js": "^0.4.17"
-  },
   "devDependencies": {
-    "selenium-webdriver":"^3.4.0",
-    "mocha": "^3.4.1",
-    "xunit-file": "^1.0.0",
     "protractor": "^5.1.2",
-    "jasmine": "^2.6.0"
+    "jasmine": "^2.6.0",
+    "jasmine-reporters": "^2.2.1"
   },
-  "scripts": {
-    "test": "mocha -t 600000 --recursive test"
-  }
 }
 
