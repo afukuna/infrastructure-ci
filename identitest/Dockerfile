@@ -22,5 +22,6 @@ RUN cp geckodriver /usr/local/bin/
 COPY package.json /src/package.json
 COPY *.js /src/
 RUN cd /src; npm install --dev
+RUN /src/node_modules/protractor/bin/webdriver-manager update
 
 ENV DISPLAY :99
