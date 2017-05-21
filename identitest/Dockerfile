@@ -20,8 +20,7 @@ RUN cp geckodriver /usr/local/bin/
 
 # Install app dependencies
 COPY package.json /src/package.json
-COPY test.js /src/test.js
-COPY test2.js /src/test2.js
+COPY *.js /src/
 RUN cd /src; npm install --dev
 
 ENV DISPLAY :99
