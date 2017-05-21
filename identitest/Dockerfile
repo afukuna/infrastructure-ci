@@ -14,7 +14,7 @@ RUN apt-get -y install nodejs
 
 # Install app dependencies
 COPY package.json /src/package.json
-COPY *.js /src/
+COPY protractor/*.js /src/
 RUN cd /src; npm install --dev
 RUN /src/node_modules/protractor/bin/webdriver-manager update
 
