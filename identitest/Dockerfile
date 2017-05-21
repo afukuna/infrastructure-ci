@@ -11,12 +11,6 @@ RUN apt-get -y install firefox
 RUN apt-get -y install openjdk-8-jre-headless
 RUN curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
 RUN apt-get -y install nodejs
-RUN wget http://selenium-release.storage.googleapis.com/3.4/selenium-server-standalone-3.4.0.jar -P /src/
-RUN wget https://github.com/mozilla/geckodriver/releases/download/v0.16.1/geckodriver-v0.16.1-linux64.tar.gz
-RUN tar -xvzf geckodriver-v0.16.1-linux64.tar.gz
-RUN rm geckodriver-v0.16.1-linux64.tar.gz
-RUN chmod +x geckodriver
-RUN cp geckodriver /usr/local/bin/
 
 # Install app dependencies
 COPY package.json /src/package.json
