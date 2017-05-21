@@ -13,9 +13,9 @@ describe('angularjs homepage todo list', function() {
     }
 
     // within a test:
-    browser.takeScreenshot().then(function (png) {
-        writeScreenShot(png, 'sample.png');
-    });
+//    browser.takeScreenshot().then(function (png) {
+//        writeScreenShot(png, 'sample.png');
+//    });
 
     element(by.model('todoList.todoText')).sendKeys('write first protractor test');
     element(by.css('[value="add"]')).click();
