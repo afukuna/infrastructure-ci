@@ -12,7 +12,6 @@ console.log('test1');
         .usingServer('http://localhost:4444/wd/hub')
         .build();
 
-        driver.get('http://www.google.com/ncr');
 console.log('test2');
 
     webdriver.WebDriver.prototype.saveScreenshot = function(filename) {
@@ -22,7 +21,6 @@ console.log('test2');
             });
         })
     };
-    driver.saveScreenshot('/tmp/sample.png');
 
 console.log('test3');
 
@@ -30,7 +28,7 @@ console.log('test3');
 
 console.log('test4');
 
-//        driver.get('http://www.google.com/ncr');
+        driver.get('http://www.google.com/ncr');
 //        driver.manage().window().setSize(400, 400);
 
 console.log('test5');
@@ -43,7 +41,7 @@ console.log('test5');
 
 console.log('test6');
 
-        driver.saveScreenshot('/tmp/sample2.png');
+//        driver.saveScreenshot('/tmp/sample2.png');
 
 console.log('test7');
         

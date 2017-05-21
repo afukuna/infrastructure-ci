@@ -32,7 +32,8 @@
   "devDependencies": {
     "selenium-webdriver":"^3.4.0",
     "mocha": "^3.4.1",
-    "xunit-file": "^1.0.0"
+    "xunit-file": "^1.0.0",
+    "protractor": "^5.1.2",
   },
   "scripts": {
     "test": "mocha -t 600000 --recursive test"
