@@ -6,9 +6,9 @@ exports.config = {
   },
   framework: 'jasmine',
   jasmineNodeOpts: {
-    isVerbose: true,
-    showColors: true,
-    includeStackTrace: true,
+//    isVerbose: true,
+//    showColors: true,
+//    includeStackTrace: true,
     defaultTimeoutInterval: 60000
   },
   onPrepare: function() {
