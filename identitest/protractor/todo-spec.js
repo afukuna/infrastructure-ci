@@ -4,6 +4,7 @@ var fs = require('fs');
 describe('angularjs homepage todo list', function() {
   it('should add a todo', function() {
     browser.get('https://angularjs.org');
+    browser.driver.manage().window().maximize();
 
     // abstract writing screen shot to a file
     function writeScreenShot(data, filename) {
