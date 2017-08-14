@@ -13,18 +13,6 @@ RUN yum -y update && yum -y install \
  && yum -y install https://download.postgresql.org/pub/repos/yum/9.4/redhat/rhel-7-x86_64/pgdg-centos94-9.4-3.noarch.rpm \
  && yum -y install postgresql94-server postgresql94-contrib
 
-#RUN service postgresql-9.4 initdb
-
-#RUN /usr/pgsql-9.4/bin/initdb --encoding=UTF8 --no-locale -D /var/lib/pgsql/9.4/data
-#RUN /usr/pgsql-9.4/bin/pg_ctl -D /var/lib/pgsql/9.4/data -l logfile start
-
-#RUN echo "local all  all      trust" >> /var/lib/pgsql/9.4/data/pg_hba.conf
-#RUN echo "host all  all    0.0.0.0/0  trust" >> /var/lib/pgsql/9.4/data/pg_hba.conf
-#RUN echo "listen_addresses='*'" >> /var/lib/pgsql/9.4/data/postgresql.conf
-
-#RUN service postgresql-9.4 start
-#RUN chkconfig postgresql-9.4 on
-
 RUN service httpd start
 RUN chkconfig httpd on
 
@@ -33,14 +21,9 @@ RUN mkdir /tmp/work
 COPY init.sql /tmp/work/init.sql
 COPY bookdb_dump.sql /tmp/work/bookdb_dump.sql
 
-RUN /usr/pgsql-9.4/bin/initdb --encoding=UTF8 --no-locale -D /var/lib/pgsql/9.4/data
-
-RUN cd ~ && echo "local all  all      trust" >> /var/lib/pgsql/9.4/data/pg_hba.conf \
+RUN /usr/pgsql-9.4/bin/initdb --encoding=UTF8 --no-locale -D /var/lib/pgsql/9.4/data \
+ && echo "local all  all      trust" >> /var/lib/pgsql/9.4/data/pg_hba.conf \
  && echo "host all  all    0.0.0.0/0  trust" >> /var/lib/pgsql/9.4/data/pg_hba.conf \
  && echo "listen_addresses='*'" >> /var/lib/pgsql/9.4/data/postgresql.conf
-# && rm /var/lib/pgsql/9.4/data/postmaster.pid \
-# && /usr/pgsql-9.4/bin/pg_ctl -D /var/lib/pgsql/9.4/data -l logfile start \
-# && psql -f /tmp/work/init.sql \
-# && psql -f /tmp/work/bookdb_dump.sql
 
 ENTRYPOINT bash -c "cd ~ && /usr/pgsql-9.4/bin/pg_ctl -D /var/lib/pgsql/9.4/data -l logfile start && sleep 5s && psql -f /tmp/work/init.sql && psql -f /tmp/work/bookdb_dump.sql && /bin/bash"
