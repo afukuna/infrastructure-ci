@@ -2,34 +2,45 @@ FROM centos:6.8
 
 USER root
 
-RUN yum -y update
-RUN yum -y install curl
-RUN yum -y install wget
-RUN yum -y install httpd
-RUN yum -y install sudo
-RUN rpm -ivh https://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm
-RUN rpm -ivh http://rpms.famillecollet.com/enterprise/remi-release-6.rpm
-RUN yum -y install --enablerepo=remi,remi-php56 php php-intl php-devel php-mbstring php-pdo php-gd php-pgsql
-RUN yum -y install https://download.postgresql.org/pub/repos/yum/9.4/redhat/rhel-7-x86_64/pgdg-centos94-9.4-3.noarch.rpm
-RUN yum -y install postgresql94-server postgresql94-contrib
+RUN yum -y update && yum -y install \
+ curl \
+ wget \
+ httpd \
+ sudo \
+ && rpm -ivh https://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm \
+ && rpm -ivh http://rpms.famillecollet.com/enterprise/remi-release-6.rpm \
+ && yum -y install --enablerepo=remi,remi-php56 php php-intl php-devel php-mbstring php-pdo php-gd php-pgsql \
+ && yum -y install https://download.postgresql.org/pub/repos/yum/9.4/redhat/rhel-7-x86_64/pgdg-centos94-9.4-3.noarch.rpm \
+ && yum -y install postgresql94-server postgresql94-contrib
 
-RUN service postgresql-9.4 initdb
+#RUN service postgresql-9.4 initdb
 
-RUN echo "local all  all      trust" >> /var/lib/pgsql/9.4/data/pg_hba.conf
-RUN echo "host all  all    0.0.0.0/0  trust" >> /var/lib/pgsql/9.4/data/pg_hba.conf
-RUN echo "listen_addresses='*'" >> /var/lib/pgsql/9.4/data/postgresql.conf
+#RUN /usr/pgsql-9.4/bin/initdb --encoding=UTF8 --no-locale -D /var/lib/pgsql/9.4/data
+#RUN /usr/pgsql-9.4/bin/pg_ctl -D /var/lib/pgsql/9.4/data -l logfile start
 
-RUN service postgresql-9.4 start
-RUN chkconfig postgresql-9.4 on
+#RUN echo "local all  all      trust" >> /var/lib/pgsql/9.4/data/pg_hba.conf
+#RUN echo "host all  all    0.0.0.0/0  trust" >> /var/lib/pgsql/9.4/data/pg_hba.conf
+#RUN echo "listen_addresses='*'" >> /var/lib/pgsql/9.4/data/postgresql.conf
+
+#RUN service postgresql-9.4 start
+#RUN chkconfig postgresql-9.4 on
 
 RUN service httpd start
 RUN chkconfig httpd on
 
 USER postgres
-
 RUN mkdir /tmp/work
 COPY init.sql /tmp/work/init.sql
 COPY bookdb_dump.sql /tmp/work/bookdb_dump.sql
 
-RUN psql -f /tmp/work/init.sql
-RUN psql -f /tmp/work/bookdb_dump.sql
+RUN /usr/pgsql-9.4/bin/initdb --encoding=UTF8 --no-locale -D /var/lib/pgsql/9.4/data
+
+RUN cd ~ && echo "local all  all      trust" >> /var/lib/pgsql/9.4/data/pg_hba.conf \
+ && echo "host all  all    0.0.0.0/0  trust" >> /var/lib/pgsql/9.4/data/pg_hba.conf \
+ && echo "listen_addresses='*'" >> /var/lib/pgsql/9.4/data/postgresql.conf
+# && rm /var/lib/pgsql/9.4/data/postmaster.pid \
+# && /usr/pgsql-9.4/bin/pg_ctl -D /var/lib/pgsql/9.4/data -l logfile start \
+# && psql -f /tmp/work/init.sql \
+# && psql -f /tmp/work/bookdb_dump.sql
+
+ENTRYPOINT bash -c "cd ~ && /usr/pgsql-9.4/bin/pg_ctl -D /var/lib/pgsql/9.4/data -l logfile start && sleep 5s && psql -f /tmp/work/init.sql && psql -f /tmp/work/bookdb_dump.sql && /bin/bash"
