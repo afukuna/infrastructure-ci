@@ -15,7 +15,8 @@ RUN yum -y install postgresql94-server postgresql94-contrib
 
 RUN service postgresql-9.4 initdb
 
-RUN echo "host all  all    0.0.0.0/0  md5" >> /var/lib/pgsql/9.4/data/pg_hba.conf
+RUN echo "local all  all      trust" >> /var/lib/pgsql/9.4/data/pg_hba.conf
+RUN echo "host all  all    0.0.0.0/0  trust" >> /var/lib/pgsql/9.4/data/pg_hba.conf
 RUN echo "listen_addresses='*'" >> /var/lib/pgsql/9.4/data/postgresql.conf
 
 RUN service postgresql-9.4 start
@@ -27,7 +28,8 @@ RUN chkconfig httpd on
 USER postgres
 
 RUN mkdir /tmp/work
+COPY init.sql /tmp/work/init.sql
 COPY bookdb_dump.sql /tmp/work/bookdb_dump.sql
 
-RUN psql --command "CREATE USER docker WITH SUPERUSER PASSWORD 'docker';"
-RUN sudo -u postgres psql -f /tmp/work/bookdb_dump.sql
+RUN psql -f /tmp/work/init.sql
+RUN psql -f /tmp/work/bookdb_dump.sql
