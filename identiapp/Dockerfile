@@ -24,6 +24,10 @@ RUN chkconfig postgresql-9.4 on
 RUN service httpd start
 RUN chkconfig httpd on
 
-#USER postgres
+USER postgres
 
-#RUN psql --command "CREATE USER docker WITH SUPERUSER PASSWORD 'docker';"
+RUN mkdir /tmp/work
+COPY bookdb_dump.sql /tmp/work/bookdb_dump.sql
+
+RUN psql --command "CREATE USER docker WITH SUPERUSER PASSWORD 'docker';"
+RUN sudo -u postgres psql -f /tmp/work/bookdb_dump.sql
