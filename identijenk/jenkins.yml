@@ -4,3 +4,5 @@ identitest:
 identiapp:
   build: ../identiapp/
   tty: true
+  ports:
+    - "80:80"
