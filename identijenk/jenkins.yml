@@ -1,8 +1,10 @@
-identitest:
-  build: ../identitest/
-  tty: true
 identiapp:
   build: ../identiapp/
   tty: true
   ports:
     - "80:80"
+identitest:
+  build: ../identitest/
+  tty: true
+  links:
+    - "jenkins_identiapp_1:app1"
