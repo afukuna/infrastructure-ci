@@ -1,5 +1,7 @@
-FROM jenkins:2.46.2
+FROM jenkins:2.60.3
 
+
+USER root
     # hostOSのdockerとversionを合わせるため？、aptで利用するrepoを追加 
 RUN echo "deb http://apt.dockerproject.org/repo debian-jessie main" > /etc/apt/sources.list.d/docker.list \
     && apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D \

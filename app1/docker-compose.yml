@@ -1,0 +1,8 @@
+identiapp:
+  build: identiapp/
+  tty: true
+  ports:
+    - "80:80"
+identitest:
+  build: identitest/
+  tty: true
