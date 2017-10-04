@@ -1,5 +1,5 @@
 exports.config = {
-  seleniumAddress: 'http://localhost:4444/wd/hub',
+  seleniumAddress: 'http://standalone-firefox:4444/wd/hub',
   specs: ['todo-spec.js'],
   capabilities: {
     browserName: 'firefox'
