@@ -10,7 +10,7 @@ pipeline {
     stage('Test'){
       steps {
         sh 'sudo docker exec -d app1_identitest_1 /src/node_modules/protractor/bin/webdriver-manager start'
-      }
+      },
       steps {
         sh 'sudo docker exec app1_identitest_1 /src/node_modules/protractor/bin/protractor /src/protractor/comf.js'
       }
