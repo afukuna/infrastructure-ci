@@ -1,0 +1,21 @@
+pipeline {
+  agent any
+
+  stages {
+    stage('up') {
+      steps {
+        sh 'docker-compose -f app1/docker-compose.yml up'
+      }
+    }
+    stage('Test'){
+      steps {
+        sh 'docker exec identitest ls -la'
+      }
+    }
+    stage('down'){
+      steps {
+        sh 'docker-compose down'
+      }
+    }
+  }
+}
