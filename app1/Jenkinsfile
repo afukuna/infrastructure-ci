@@ -9,7 +9,7 @@ pipeline {
     }
     stage('Test'){
       steps {
-        sh 'sudo docker exec identitest ls -la'
+        sh 'sudo docker exec app1_identitest_1 ls -la'
       }
     }
     stage('down'){
