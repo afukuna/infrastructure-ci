@@ -4,17 +4,17 @@ pipeline {
   stages {
     stage('up') {
       steps {
-        sh 'docker-compose -f app1/docker-compose.yml up -d'
+        sh 'sudo docker-compose -f app1/docker-compose.yml up -d'
       }
     }
     stage('Test'){
       steps {
-        sh 'docker exec identitest ls -la'
+        sh 'sudo docker exec identitest ls -la'
       }
     }
     stage('down'){
       steps {
-        sh 'docker-compose down'
+        sh 'sudo docker-compose down'
       }
     }
   }
